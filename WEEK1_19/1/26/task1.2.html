@@ -8,10 +8,63 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-around;
+            gap: 20px;
             min-height: 100vh;
             background-color: #f0f0f0;
+            padding: 20px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .form-section {
+            background-color: white;
+            border: 2px solid #333;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h2 {
+            text-align: center;
+            margin-top: 0;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #333;
+            background-color: #f9f9f9;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #555;
         }
         .ticket {
             background-color: white;
@@ -56,6 +109,49 @@
     </style>
 </head>
 <body>
+    <!-- FORM SECTION -->
+    <div class="form-section">
+        <h2>Edit Hall Ticket</h2>
+        
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="swayam">
+        </div>
+        
+        <div class="form-group">
+            <label for="rollNo">Roll Number:</label>
+            <input type="text" id="rollNo" value="5024123">
+        </div>
+        
+        <div class="form-group">
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" value="IT">
+        </div>
+        
+        <div class="form-group">
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester" value="4">
+        </div>
+        
+        <div class="form-group">
+            <label for="exam">Exam:</label>
+            <input type="text" id="exam" value="Mid Term 2026">
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="text" id="date" value="January 19, 2026">
+        </div>
+        
+        <div class="form-group">
+            <label for="invigilator">Invigilator:</label>
+            <input type="text" id="invigilator" value="batman">
+        </div>
+        
+        <button onclick="updateTicket()">Update Ticket</button>
+    </div>
+    
+    <!-- TICKET SECTION -->
     <div class="ticket">
         <h2>HALL TICKET</h2>
         
@@ -66,31 +162,31 @@
             </tr>
             <tr>
                 <td>Name</td>
-                <td>swayam</td>
+                <td id="displayName">swayam</td>
             </tr>
             <tr>
                 <td>Roll Number</td>
-                <td>5024123</td>
+                <td id="displayRollNo">5024123</td>
             </tr>
             <tr>
                 <td>Branch</td>
-                <td>IT</td>
+                <td id="displayBranch">IT</td>
             </tr>
             <tr>
                 <td>Semester</td>
-                <td>4</td>
+                <td id="displaySemester">4</td>
             </tr>
             <tr>
                 <td>Exam</td>
-                <td>Mid Term 2026</td>
+                <td id="displayExam">Mid Term 2026</td>
             </tr>
             <tr>
                 <td>Date</td>
-                <td>January 19, 2026</td>
+                <td id="displayDate">January 19, 2026</td>
             </tr>
             <tr>
                 <td>Invigilator</td>
-                <td>batman</td>
+                <td id="displayInvigilator">batman</td>
             </tr>
         </table>
         
@@ -98,6 +194,31 @@
             <p><strong>Photo:</strong></p>
             <img src="../../../image/download.jpg" alt="Photo">
         </div>
+    </div>
+    
+    <script>
+        function updateTicket() {
+            // Get values from form inputs
+            const name = document.getElementById('name').value;
+            const rollNo = document.getElementById('rollNo').value;
+            const branch = document.getElementById('branch').value;
+            const semester = document.getElementById('semester').value;
+            const exam = document.getElementById('exam').value;
+            const date = document.getElementById('date').value;
+            const invigilator = document.getElementById('invigilator').value;
+            
+            // Update table display with new values
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayRollNo').textContent = rollNo;
+            document.getElementById('displayBranch').textContent = branch;
+            document.getElementById('displaySemester').textContent = semester;
+            document.getElementById('displayExam').textContent = exam;
+            document.getElementById('displayDate').textContent = date;
+            document.getElementById('displayInvigilator').textContent = invigilator;
+            
+            alert('Ticket updated successfully!');
+        }
+    </script>
     </div>
 </body>
 </html>
