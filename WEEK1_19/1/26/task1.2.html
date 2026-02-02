@@ -4,109 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hall Ticket</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-            padding: 20px;
-            flex-wrap: wrap;
-            align-items: flex-start;
-        }
-        .form-section {
-            background-color: white;
-            border: 2px solid #333;
-            padding: 30px;
-            width: 400px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .form-section h2 {
-            text-align: center;
-            margin-top: 0;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        .form-group {
-            margin: 15px 0;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: #333;
-            background-color: #f9f9f9;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #555;
-        }
-        .ticket {
-            background-color: white;
-            border: 2px solid #333;
-            padding: 30px;
-            width: 500px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .ticket h2 {
-            text-align: center;
-            margin-top: 0;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #333;
-            color: white;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .ticket-photo {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .ticket-photo img {
-            width: 100px;
-            height: 120px;
-            border: 1px solid #999;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../Week2_2/2/26/task2.1.css">
 </head>
 <body>
     <!-- FORM SECTION -->
@@ -153,7 +51,11 @@
     
     <!-- TICKET SECTION -->
     <div class="ticket">
-        <h2>HALL TICKET</h2>
+        <h2>🎓 HALL TICKET</h2>
+        <div class="ticket-header">
+            <p>Examination Admission Card</p>
+            <p id="ticketId">Ticket ID: HT-2026-0001</p>
+        </div>
         
         <table>
             <tr>
@@ -161,7 +63,7 @@
                 <th>Details</th>
             </tr>
             <tr>
-                <td>Name</td>
+                <td>Full Name</td>
                 <td id="displayName">swayam</td>
             </tr>
             <tr>
@@ -177,11 +79,11 @@
                 <td id="displaySemester">4</td>
             </tr>
             <tr>
-                <td>Exam</td>
+                <td>Examination</td>
                 <td id="displayExam">Mid Term 2026</td>
             </tr>
             <tr>
-                <td>Date</td>
+                <td>Exam Date</td>
                 <td id="displayDate">January 19, 2026</td>
             </tr>
             <tr>
@@ -191,21 +93,30 @@
         </table>
         
         <div class="ticket-photo">
-            <p><strong>Photo:</strong></p>
-            <img src="../../../image/download.jpg" alt="Photo">
+            <p>📷 Candidate Photo</p>
+            <img src="../../../image/download.jpg" alt="Candidate Photo">
         </div>
     </div>
     
     <script>
+        // Real-time update as user types
+        document.getElementById('name').addEventListener('keyup', updateTicket);
+        document.getElementById('rollNo').addEventListener('keyup', updateTicket);
+        document.getElementById('branch').addEventListener('keyup', updateTicket);
+        document.getElementById('semester').addEventListener('keyup', updateTicket);
+        document.getElementById('exam').addEventListener('keyup', updateTicket);
+        document.getElementById('date').addEventListener('keyup', updateTicket);
+        document.getElementById('invigilator').addEventListener('keyup', updateTicket);
+
         function updateTicket() {
             // Get values from form inputs
-            const name = document.getElementById('name').value;
-            const rollNo = document.getElementById('rollNo').value;
-            const branch = document.getElementById('branch').value;
-            const semester = document.getElementById('semester').value;
-            const exam = document.getElementById('exam').value;
-            const date = document.getElementById('date').value;
-            const invigilator = document.getElementById('invigilator').value;
+            const name = document.getElementById('name').value || 'N/A';
+            const rollNo = document.getElementById('rollNo').value || 'N/A';
+            const branch = document.getElementById('branch').value || 'N/A';
+            const semester = document.getElementById('semester').value || 'N/A';
+            const exam = document.getElementById('exam').value || 'N/A';
+            const date = document.getElementById('date').value || 'N/A';
+            const invigilator = document.getElementById('invigilator').value || 'N/A';
             
             // Update table display with new values
             document.getElementById('displayName').textContent = name;
@@ -216,8 +127,14 @@
             document.getElementById('displayDate').textContent = date;
             document.getElementById('displayInvigilator').textContent = invigilator;
             
-            alert('Ticket updated successfully!');
+            // Generate dynamic ticket ID
+            if (rollNo !== 'N/A') {
+                document.getElementById('ticketId').textContent = 'Ticket ID: HT-' + new Date().getFullYear() + '-' + rollNo;
+            }
         }
+
+        // Initialize on page load
+        window.addEventListener('load', updateTicket);
     </script>
     </div>
 </body>
