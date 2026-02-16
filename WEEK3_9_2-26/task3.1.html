@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Complete Guide - Fully Commented</title>
+    
+    <!-- BOOTSTRAP CSS CDN - This loads all Bootstrap styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Custom CSS for demonstration purposes */
+        .grid-demo-box {
+            background-color: #0d6efd;  /* Bootstrap primary blue */
+            color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border: 2px solid #0a58ca;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .section-divider {
+            margin: 60px 0;
+            border-top: 3px solid #dee2e6;
+        }
+        
+        .component-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         NAVBAR COMPONENT
+         ========================================== -->
+    
+    <!-- 
+        navbar: Main navigation component
+        navbar-expand-lg: Navbar is collapsed on screens smaller than large (992px)
+        navbar-dark: Dark text color for nav items (used with dark backgrounds)
+        bg-dark: Dark background color
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+        <!-- 
+            container-fluid: Full-width container that spans entire viewport
+            Alternative: container (fixed-width, centered)
+        -->
+        <div class="container-fluid">
+            
+            <!-- 
+                navbar-brand: Logo or site name styling
+            -->
+            <a class="navbar-brand" href="#">
+                <!-- Using emoji as logo for simplicity -->
+                🚀 Bootstrap Demo
+            </a>
+            
+            <!-- 
+                navbar-toggler: Hamburger button for mobile
+                data-bs-toggle="collapse": Bootstrap JS directive to toggle collapse
+                data-bs-target: ID of element to collapse/expand
+            -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <!-- 
+                    navbar-toggler-icon: Creates the hamburger icon (three lines)
+                -->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- 
+                collapse: Hides content on mobile
+                navbar-collapse: Applies navbar collapse styles
+                id="mainNavbar": Target for the toggler button
+            -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                
+                <!-- 
+                    navbar-nav: Container for nav items
+                    ms-auto: Margin-start auto (pushes items to the right)
+                    Alternative: me-auto (pushes left), mx-auto (centers)
+                -->
+                <ul class="navbar-nav ms-auto">
+                    
+                    <!-- 
+                        nav-item: Individual navigation item wrapper
+                    -->
+                    <li class="nav-item">
+                        <!-- 
+                            nav-link: Styling for navigation links
+                            active: Highlights current page
+                        -->
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    
+                    <!-- 
+                        DROPDOWN MENU inside navbar
+                        dropdown: Indicates this is a dropdown component
+                    -->
+                    <li class="nav-item dropdown">
+                        <!-- 
+                            dropdown-toggle: Adds dropdown arrow
+                            data-bs-toggle="dropdown": Makes this a dropdown trigger
+                        -->
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <!-- 
+                            dropdown-menu: The actual dropdown panel
+                        -->
+                        <ul class="dropdown-menu">
+                            <!-- 
+                                dropdown-item: Individual item in dropdown
+                            -->
+                            <li><a class="dropdown-item" href="#web">Web Design</a></li>
+                            <li><a class="dropdown-item" href="#app">App Development</a></li>
+                            <!-- 
+                                dropdown-divider: Horizontal line separator
+                            -->
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#consulting">Consulting</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         BREADCRUMB COMPONENT
+         ========================================== -->
+    
+    <!-- 
+        container: Fixed-width centered container
+        mt-3: Margin-top 3 units (spacing utility)
+        Spacing scale: 1 (0.25rem) to 5 (3rem)
+    -->
+    <div class="container mt-3">
+        
+        <!-- 
+            aria-label: Accessibility label for screen readers
+        -->
+        <nav aria-label="breadcrumb">
+            
+            <!-- 
+                breadcrumb: Breadcrumb component styling
+            -->
+            <ol class="breadcrumb">
+                <!-- 
+                    breadcrumb-item: Individual breadcrumb item
+                -->
+                <li class="breadcrumb-item">
+                    <a href="#">🏠 Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">📚 Learning</a>
+                </li>
+                <!-- 
+                    active: Indicates current page (not clickable)
+                    aria-current="page": Accessibility attribute
+                -->
+                <li class="breadcrumb-item active" aria-current="page">
+                    Bootstrap Tutorial
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- ==========================================
+         JUMBOTRON / HERO SECTION
+         ========================================== -->
+    
+    <!-- 
+        container: Fixed-width centered container
+        my-5: Margin Y-axis (top and bottom) - 5 units
+    -->
+    <div class="container my-5">
+        
+        <!-- 
+            p-5: Padding all sides - 5 units
+            mb-4: Margin-bottom - 4 units
+            bg-light: Light gray background color
+            rounded-3: Border-radius - level 3
+            text-center: Center-align text
+        -->
+        <div class="p-5 mb-4 bg-light rounded-3 text-center">
+            
+            <!-- 
+                display-4: Large display heading (bigger than h1)
+                Display classes: display-1 (largest) to display-6 (smallest)
+                fw-bold: Font-weight bold
+            -->
+            <h1 class="display-4 fw-bold">Welcome to Bootstrap 5!</h1>
+            
+            <!-- 
+                lead: Makes paragraph stand out (larger, lighter font)
+                text-muted: Gray text color
+            -->
+            <p class="lead text-muted">
+                A comprehensive guide to Bootstrap components with detailed explanations
+            </p>
+            
+            <!-- 
+                my-4: Margin Y-axis (top and bottom) - 4 units
+            -->
+            <hr class="my-4">
+            
+            <!-- 
+                col-lg-8: Column takes 8 out of 12 columns on large screens
+                mx-auto: Margin X-axis auto (centers the element horizontally)
+            -->
+            <p class="col-lg-8 mx-auto">
+                This page demonstrates all major Bootstrap components including Grid System, 
+                Forms, Buttons, Navbar, Breadcrumb, and Jumbotron with explicit comments.
+            </p>
+            
+            <!-- 
+                btn: Base button class
+                btn-primary: Primary color button (blue)
+                btn-lg: Large button size
+            -->
+            <button class="btn btn-primary btn-lg" type="button">
+                Get Started 🚀
+            </button>
+            
+            <!-- 
+                btn-outline-secondary: Outlined button (no fill, just border)
+                ms-2: Margin-start (left in LTR) - 2 units
+            -->
+            <button class="btn btn-outline-secondary btn-lg ms-2" type="button">
+                Learn More
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MAIN CONTENT CONTAINER
+         ========================================== -->
+    
+    <div class="container">
+
+        <!-- ==========================================
+             GRID SYSTEM DEMONSTRATION
+             ========================================== -->
+        
+        <div class="component-title">
+            <!-- 
+                text-center: Center-align text
+                mb-0: Margin-bottom 0 (removes default margin)
+            -->
+            <h2 class="text-center mb-0">📐 Grid System</h2>
+        </div>
+
+        <!-- 
+            GRID BASICS:
+            - Bootstrap uses a 12-column grid system
+            - Rows must be inside containers
+            - Columns must be inside rows
+            - Content goes inside columns
+        -->
+
+        <h3>Example 1: Equal Width Columns</h3>
+        <!-- 
+            row: Creates a flexbox row for columns
+        -->
+        <div class="row mb-4">
+            <!-- 
+                col: Auto-width column (divides space equally)
+                All three columns below will be equal width
+            -->
+            <div class="col">
+                <div class="grid-demo-box">Column 1<br>(.col)</div>
+            </div>
+            <div class="col">
+                <div class="grid-demo-box">Column 2<br>(.col)</div>
+            </div>
+            <div class="col">
+                <div class="grid-demo-box">Column 3<br>(.col)</div>
+            </div>
+        </div>
+
+        <h3>Example 2: Specific Column Widths (12-column grid)</h3>
+        <div class="row mb-4">
+            <!-- 
+                col-3: Takes 3 out of 12 columns (25% width)
+            -->
+            <div class="col-3">
+                <div class="grid-demo-box">col-3<br>(25%)</div>
+            </div>
+            <!-- 
+                col-6: Takes 6 out of 12 columns (50% width)
+            -->
+            <div class="col-6">
+                <div class="grid-demo-box">col-6<br>(50%)</div>
+            </div>
+            <!-- 
+                col-3: Takes 3 out of 12 columns (25% width)
+                Total: 3 + 6 + 3 = 12 columns ✓
+            -->
+            <div class="col-3">
+                <div class="grid-demo-box">col-3<br>(25%)</div>
+            </div>
+        </div>
+
+        <h3>Example 3: Responsive Grid (Changes at breakpoints)</h3>
+        <!-- 
+            BREAKPOINTS:
+            - col-     : Extra small (<576px) - default, all screen sizes
+            - col-sm-  : Small (≥576px)
+            - col-md-  : Medium (≥768px)
+            - col-lg-  : Large (≥992px)
+            - col-xl-  : Extra large (≥1200px)
+            - col-xxl- : Extra extra large (≥1400px)
+        -->
+        <div class="row mb-4">
+            <!-- 
+                col-12: Full width on extra small screens (mobile)
+                col-md-6: Half width on medium screens and up (tablet/desktop)
+                col-lg-4: One-third width on large screens (desktop)
+            -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="grid-demo-box">
+                    Mobile: Full<br>
+                    Tablet: Half<br>
+                    Desktop: 1/3
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="grid-demo-box">
+                    Mobile: Full<br>
+                    Tablet: Half<br>
+                    Desktop: 1/3
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="grid-demo-box">
+                    Mobile: Full<br>
+                    Tablet: Half<br>
+                    Desktop: 1/3
+                </div>
+            </div>
+        </div>
+
+        <h3>Example 4: Grid with Gutters (Gaps)</h3>
+        <!-- 
+            g-3: Gap (gutter) of 3 units between all columns
+            g-0: No gap
+            gx-*: Horizontal gap only
+            gy-*: Vertical gap only
+        -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="grid-demo-box">Box 1</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="grid-demo-box">Box 2</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="grid-demo-box">Box 3</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="grid-demo-box">Box 4</div>
+            </div>
+        </div>
+
+        <h3>Example 5: Offset Columns</h3>
+        <div class="row mb-4">
+            <!-- 
+                col-4: Takes 4 columns
+                offset-4: Pushes column 4 columns to the right
+                Result: Creates centered 4-column layout (4 empty + 4 content + 4 empty)
+            -->
+            <div class="col-4 offset-4">
+                <div class="grid-demo-box">
+                    Centered<br>
+                    (offset-4)
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ==========================================
+             BUTTONS DEMONSTRATION
+             ========================================== -->
+        
+        <div class="component-title">
+            <h2 class="text-center mb-0">🔘 Buttons</h2>
+        </div>
+
+        <h3>Button Color Variants</h3>
+        <!-- 
+            mb-3: Margin-bottom 3 units
+        -->
+        <div class="mb-3">
+            <!-- 
+                btn: Base button class (required for all buttons)
+                btn-primary: Primary brand color (blue)
+            -->
+            <button type="button" class="btn btn-primary">Primary</button>
+            
+            <!-- btn-secondary: Secondary color (gray) -->
+            <button type="button" class="btn btn-secondary">Secondary</button>
+            
+            <!-- btn-success: Success color (green) -->
+            <button type="button" class="btn btn-success">Success</button>
+            
+            <!-- btn-danger: Danger/error color (red) -->
+            <button type="button" class="btn btn-danger">Danger</button>
+            
+            <!-- btn-warning: Warning color (yellow) -->
+            <button type="button" class="btn btn-warning">Warning</button>
+            
+            <!-- btn-info: Info color (cyan) -->
+            <button type="button" class="btn btn-info">Info</button>
+            
+            <!-- btn-light: Light color (light gray) -->
+            <button type="button" class="btn btn-light">Light</button>
+            
+            <!-- btn-dark: Dark color (dark gray/black) -->
+            <button type="button" class="btn btn-dark">Dark</button>
+            
+            <!-- btn-link: Styled like a hyperlink -->
+            <button type="button" class="btn btn-link">Link</button>
+        </div>
+
+        <h3>Outline Button Variants</h3>
+        <!-- 
+            Outline buttons: Transparent background with colored border
+            btn-outline-*: Creates outlined version of any color
+        -->
+        <div class="mb-3">
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-danger">Danger</button>
+            <button type="button" class="btn btn-outline-warning">Warning</button>
+            <button type="button" class="btn btn-outline-info">Info</button>
+        </div>
+
+        <h3>Button Sizes</h3>
+        <div class="mb-3">
+            <!-- 
+                btn-lg: Large button
+            -->
+            <button type="button" class="btn btn-primary btn-lg">Large Button</button>
+            
+            <!-- 
+                No size modifier: Normal/default button size
+            -->
+            <button type="button" class="btn btn-primary">Normal Button</button>
+            
+            <!-- 
+                btn-sm: Small button
+            -->
+            <button type="button" class="btn btn-primary btn-sm">Small Button</button>
+        </div>
+
+        <h3>Button States</h3>
+        <div class="mb-3">
+            <!-- 
+                active: Makes button appear pressed/selected
+            -->
+            <button type="button" class="btn btn-primary active">Active State</button>
+            
+            <!-- 
+                disabled: Disables button (using class)
+            -->
+            <button type="button" class="btn btn-primary disabled">Disabled (class)</button>
+            
+            <!-- 
+                disabled attribute: Disables button (using HTML attribute)
+                More reliable than class for actual disabling
+            -->
+            <button type="button" class="btn btn-primary" disabled>Disabled (attribute)</button>
+        </div>
+
+        <h3>Block Buttons (Full Width)</h3>
+        <div class="mb-3">
+            <!-- 
+                d-grid: Display grid (makes button take full width)
+                gap-2: Gap of 2 units between buttons
+            -->
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button">Block Button 1</button>
+                <button class="btn btn-secondary" type="button">Block Button 2</button>
+            </div>
+        </div>
+
+        <h3>Button Groups</h3>
+        <!-- 
+            btn-group: Groups buttons together (removes space between them)
+            role="group": Accessibility attribute
+        -->
+        <div class="btn-group mb-3" role="group">
+            <button type="button" class="btn btn-primary">Left</button>
+            <button type="button" class="btn btn-primary">Middle</button>
+            <button type="button" class="btn btn-primary">Right</button>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ==========================================
+             FORMS DEMONSTRATION
+             ========================================== -->
+        
+        <div class="component-title">
+            <h2 class="text-center mb-0">📝 Forms</h2>
+        </div>
+
+        <form>
+            <h3>Basic Form Inputs</h3>
+            
+            <!-- TEXT INPUT -->
+            <!-- 
+                mb-3: Margin-bottom 3 units (spacing between form groups)
+            -->
+            <div class="mb-3">
+                <!-- 
+                    form-label: Styling for form labels
+                    for="": Associates label with input (clicking label focuses input)
+                -->
+                <label for="inputEmail" class="form-label">Email address</label>
+                
+                <!-- 
+                    form-control: Main class for text inputs, selects, textareas
+                    Makes inputs full-width with consistent styling
+                -->
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="inputEmail" 
+                    placeholder="name@example.com"
+                >
+                
+                <!-- 
+                    form-text: Helper text styling (smaller, muted)
+                -->
+                <div class="form-text">
+                    We'll never share your email with anyone else.
+                </div>
+            </div>
+
+            <!-- PASSWORD INPUT -->
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="inputPassword"
+                    placeholder="Enter password"
+                >
+            </div>
+
+            <!-- SELECT DROPDOWN -->
+            <div class="mb-3">
+                <label for="selectCountry" class="form-label">Country</label>
+                <!-- 
+                    form-select: Styling for select dropdowns
+                -->
+                <select class="form-select" id="selectCountry">
+                    <option selected>Choose your country...</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                    <option value="au">Australia</option>
+                    <option value="in">India</option>
+                </select>
+            </div>
+
+            <!-- TEXTAREA -->
+            <div class="mb-3">
+                <label for="textareaMessage" class="form-label">Message</label>
+                <!-- 
+                    form-control works for textarea too
+                    rows: Number of visible text lines
+                -->
+                <textarea 
+                    class="form-control" 
+                    id="textareaMessage" 
+                    rows="4"
+                    placeholder="Enter your message here..."
+                ></textarea>
+            </div>
+
+            <!-- FILE INPUT -->
+            <div class="mb-3">
+                <label for="fileUpload" class="form-label">Upload File</label>
+                <!-- 
+                    form-control works for file inputs too
+                -->
+                <input class="form-control" type="file" id="fileUpload">
+            </div>
+
+            <!-- CHECKBOXES -->
+            <div class="mb-3">
+                <label class="form-label">Interests (Check all that apply)</label>
+                
+                <!-- 
+                    form-check: Wrapper for checkbox/radio
+                -->
+                <div class="form-check">
+                    <!-- 
+                        form-check-input: Styling for checkbox/radio input
+                    -->
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        value="coding" 
+                        id="checkCoding"
+                    >
+                    <!-- 
+                        form-check-label: Label for checkbox/radio
+                    -->
+                    <label class="form-check-label" for="checkCoding">
+                        Coding
+                    </label>
+                </div>
+                
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        value="design" 
+                        id="checkDesign"
+                    >
+                    <label class="form-check-label" for="checkDesign">
+                        Design
+                    </label>
+                </div>
+                
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        value="marketing" 
+                        id="checkMarketing"
+                    >
+                    <label class="form-check-label" for="checkMarketing">
+                        Marketing
+                    </label>
+                </div>
+            </div>
+
+            <!-- RADIO BUTTONS -->
+            <div class="mb-3">
+                <label class="form-label">Experience Level (Choose one)</label>
+                
+                <!-- 
+                    Radio buttons with same 'name' attribute = only one can be selected
+                -->
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        name="experience" 
+                        id="radioBeginner"
+                        value="beginner"
+                        checked
+                    >
+                    <label class="form-check-label" for="radioBeginner">
+                        Beginner
+                    </label>
+                </div>
+                
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        name="experience" 
+                        id="radioIntermediate"
+                        value="intermediate"
+                    >
+                    <label class="form-check-label" for="radioIntermediate">
+                        Intermediate
+                    </label>
+                </div>
+                
+                <div class="form-check">
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        name="experience" 
+                        id="radioAdvanced"
+                        value="advanced"
+                    >
+                    <label class="form-check-label" for="radioAdvanced">
+                        Advanced
+                    </label>
+                </div>
+            </div>
+
+            <!-- SWITCHES (Toggle-style checkboxes) -->
+            <div class="mb-3">
+                <label class="form-label">Preferences</label>
+                
+                <!-- 
+                    form-switch: Makes checkbox look like a toggle switch
+                -->
+                <div class="form-check form-switch">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        id="switchNewsletter"
+                    >
+                    <label class="form-check-label" for="switchNewsletter">
+                        Subscribe to newsletter
+                    </label>
+                </div>
+                
+                <div class="form-check form-switch">
+                    <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        id="switchNotifications"
+                        checked
+                    >
+                    <label class="form-check-label" for="switchNotifications">
+                        Enable notifications
+                    </label>
+                </div>
+            </div>
+
+            <!-- RANGE SLIDER -->
+            <div class="mb-3">
+                <label for="rangeAge" class="form-label">Age: <span id="ageValue">25</span></label>
+                <!-- 
+                    form-range: Styling for range inputs (sliders)
+                -->
+                <input 
+                    type="range" 
+                    class="form-range" 
+                    id="rangeAge" 
+                    min="18" 
+                    max="100" 
+                    value="25"
+                    oninput="document.getElementById('ageValue').textContent = this.value"
+                >
+            </div>
+
+            <h3 class="mt-5">Input Groups (With Icons/Text)</h3>
+            
+            <!-- INPUT GROUP - Prepended -->
+            <div class="mb-3">
+                <label for="inputUsername" class="form-label">Username</label>
+                <!-- 
+                    input-group: Container for grouped inputs
+                -->
+                <div class="input-group">
+                    <!-- 
+                        input-group-text: Text/icon that appears before/after input
+                    -->
+                    <span class="input-group-text">@</span>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputUsername"
+                        placeholder="username"
+                    >
+                </div>
+            </div>
+
+            <!-- INPUT GROUP - Appended -->
+            <div class="mb-3">
+                <label for="inputWebsite" class="form-label">Website</label>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputWebsite"
+                        placeholder="yoursite"
+                    >
+                    <span class="input-group-text">.com</span>
+                </div>
+            </div>
+
+            <!-- INPUT GROUP - Both sides -->
+            <div class="mb-3">
+                <label for="inputPrice" class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        id="inputPrice"
+                        placeholder="0.00"
+                    >
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+
+            <!-- INPUT GROUP - With Button -->
+            <div class="mb-3">
+                <label for="inputSearch" class="form-label">Search</label>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputSearch"
+                        placeholder="Search for..."
+                    >
+                    <button class="btn btn-primary" type="button">Go</button>
+                </div>
+            </div>
+
+            <h3 class="mt-5">Horizontal Form Layout</h3>
+            
+            <!-- 
+                HORIZONTAL FORM: Labels and inputs side-by-side
+                Uses grid system (row and col-*)
+            -->
+            <div class="row mb-3">
+                <!-- 
+                    col-sm-2: Label takes 2 columns on small screens and up
+                    col-form-label: Aligns label vertically with input
+                -->
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <!-- 
+                    col-sm-10: Input takes remaining 10 columns
+                -->
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3">
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3">
+                </div>
+            </div>
+
+            <h3 class="mt-5">Form Validation States</h3>
+            
+            <!-- VALID INPUT -->
+            <div class="mb-3">
+                <label for="validInput" class="form-label">Valid Input</label>
+                <!-- 
+                    is-valid: Shows green border and checkmark
+                -->
+                <input 
+                    type="text" 
+                    class="form-control is-valid" 
+                    id="validInput"
+                    value="This looks good!"
+                >
+                <!-- 
+                    valid-feedback: Success message (shown with is-valid)
+                -->
+                <div class="valid-feedback">
+                    Looks good! ✓
+                </div>
+            </div>
+
+            <!-- INVALID INPUT -->
+            <div class="mb-3">
+                <label for="invalidInput" class="form-label">Invalid Input</label>
+                <!-- 
+                    is-invalid: Shows red border and X mark
+                -->
+                <input 
+                    type="text" 
+                    class="form-control is-invalid" 
+                    id="invalidInput"
+                    value="Bad input"
+                >
+                <!-- 
+                    invalid-feedback: Error message (shown with is-invalid)
+                -->
+                <div class="invalid-feedback">
+                    Please provide a valid input! ✗
+                </div>
+            </div>
+
+            <!-- INLINE FORM ELEMENTS -->
+            <h3 class="mt-5">Inline Form Elements</h3>
+            <div class="row g-3 align-items-center mb-3">
+                <div class="col-auto">
+                    <label for="inlineInput" class="col-form-label">Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="inlineInput">
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            <!-- FORM SUBMIT BUTTONS -->
+            <div class="mt-4">
+                <!-- 
+                    type="submit": Submits the form
+                -->
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Submit Form
+                </button>
+                
+                <!-- 
+                    type="reset": Resets all form fields
+                    ms-2: Margin-start (left) 2 units
+                -->
+                <button type="reset" class="btn btn-secondary btn-lg ms-2">
+                    Reset
+                </button>
+                
+                <button type="button" class="btn btn-outline-danger btn-lg ms-2">
+                    Cancel
+                </button>
+            </div>
+        </form>
+
+        <div class="section-divider"></div>
+
+        <!-- ==========================================
+             ADDITIONAL COMPONENTS
+             ========================================== -->
+        
+        <div class="component-title">
+            <h2 class="text-center mb-0">🎨 Additional Components</h2>
+        </div>
+
+        <h3>Cards with Grid</h3>
+        <!-- 
+            Cards: Flexible content containers
+            Using grid to make responsive card layout
+        -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-4">
+                <!-- 
+                    card: Main card container
+                -->
+                <div class="card">
+                    <!-- 
+                        card-header: Header section of card
+                    -->
+                    <div class="card-header bg-primary text-white">
+                        Featured Card
+                    </div>
+                    <!-- 
+                        card-body: Main content area of card
+                    -->
+                    <div class="card-body">
+                        <!-- 
+                            card-title: Title inside card
+                        -->
+                        <h5 class="card-title">Card Title</h5>
+                        <!-- 
+                            card-text: Text content in card
+                        -->
+                        <p class="card-text">
+                            This is a card component with header, body, and footer.
+                        </p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <!-- 
+                        card-footer: Footer section of card
+                    -->
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Simple Card</h5>
+                        <p class="card-text">
+                            A basic card with just a body section.
+                        </p>
+                        <a href="#" class="btn btn-success">Action</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-danger">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Bordered Card</h5>
+                        <p class="card-text">
+                            Card with colored border using border-* utility.
+                        </p>
+                        <a href="#" class="btn btn-outline-danger">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Alerts</h3>
+        <!-- 
+            Alerts: Feedback messages for user actions
+            alert: Base alert class
+            alert-*: Color variants
+        -->
+        <div class="alert alert-primary" role="alert">
+            <strong>Primary Alert!</strong> This is a primary alert message.
+        </div>
+        
+        <div class="alert alert-success" role="alert">
+            <strong>Success!</strong> Your action was completed successfully.
+        </div>
+        
+        <div class="alert alert-warning" role="alert">
+            <strong>Warning!</strong> Please review your input.
+        </div>
+        
+        <div class="alert alert-danger" role="alert">
+            <strong>Error!</strong> Something went wrong.
+        </div>
+
+        <h3>Badges</h3>
+        <!-- 
+            Badges: Small count and labeling component
+            badge: Base badge class
+            bg-*: Background color
+            rounded-pill: Makes badge rounded
+        -->
+        <div class="mb-3">
+            <h5>Notifications <span class="badge bg-primary">4</span></h5>
+            <h5>Messages <span class="badge bg-danger">12</span></h5>
+            <h5>Updates <span class="badge bg-success rounded-pill">New</span></h5>
+        </div>
+
+        <h3>Progress Bars</h3>
+        <!-- 
+            progress: Container for progress bar
+        -->
+        <div class="mb-3">
+            <div class="progress" style="height: 25px;">
+                <!-- 
+                    progress-bar: The actual bar
+                    w-*: Width percentage (w-25 = 25%, w-50 = 50%, etc.)
+                -->
+                <div class="progress-bar" role="progressbar" style="width: 25%">25%</div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <div class="progress" style="height: 25px;">
+                <!-- 
+                    bg-success: Changes bar color to green
+                -->
+                <div class="progress-bar bg-success" role="progressbar" style="width: 60%">60%</div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <div class="progress" style="height: 25px;">
+                <!-- 
+                    progress-bar-striped: Adds stripes
+                    progress-bar-animated: Animates the stripes
+                -->
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
+                     role="progressbar" 
+                     style="width: 75%">
+                    75%
+                </div>
+            </div>
+        </div>
+
+        <h3>Spinner / Loading Indicators</h3>
+        <div class="mb-5">
+            <!-- 
+                spinner-border: Border-style spinner
+            -->
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+            <!-- 
+                spinner-grow: Growing animation spinner
+            -->
+            <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+            <!-- 
+                spinner-border-sm: Small spinner
+            -->
+            <div class="spinner-border spinner-border-sm text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+    </div> <!-- End of main container -->
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    
+    <!-- 
+        bg-dark: Dark background
+        text-white: White text
+        text-center: Center-aligned text
+        py-4: Padding Y-axis (top and bottom) 4 units
+        mt-5: Margin-top 5 units
+    -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-2">© 2024 Bootstrap Learning Guide</p>
+            <p class="mb-0">
+                <small>Built with Bootstrap 5.3.2 | All components fully commented</small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 
+        BOOTSTRAP JAVASCRIPT BUNDLE
+        Required for interactive components (navbar toggle, dropdowns, etc.)
+        Includes Popper.js for positioning
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 
+        CUSTOM JAVASCRIPT (Optional)
+        Add your own JavaScript here
+    -->
+    <script>
+        // Example: Log when page is loaded
+        console.log('Bootstrap page loaded successfully!');
+        
+        // Example: Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+            alert('Form submitted! (This is just a demo)');
+        });
+    </script>
+
+</body>
+</html>
