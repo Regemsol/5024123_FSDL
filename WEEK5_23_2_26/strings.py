@@ -2,10 +2,12 @@
 
 
 def reverse(s):
+    # Return the string reversed using slicing
     return s[::-1]
 
 
 def is_palindrome(s):
+    # Normalize and compare to check palindrome-ness
     if not isinstance(s, str):
         return False
     s2 = ''.join(ch.lower() for ch in s if ch.isalnum())
@@ -13,10 +15,12 @@ def is_palindrome(s):
 
 
 def truncate(s, length):
+    # Truncate with ellipsis when string exceeds length
     return s if len(s) <= length else s[:length-3] + '...'
 
 
 def main():
+    # Demo of common string helpers
     s = 'Able was I, ere I saw Elba'
     print('reverse:', reverse('hello'))
     print('palindrome?', is_palindrome(s))
