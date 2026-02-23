@@ -2,6 +2,7 @@
 
 
 def dedupe(seq):
+    # Preserve order while removing duplicates
     seen = set()
     out = []
     for x in seq:
@@ -12,6 +13,7 @@ def dedupe(seq):
 
 
 def safe_get(seq, index, default=None):
+    # Return element or a default instead of raising IndexError
     try:
         return seq[index]
     except IndexError:
@@ -19,12 +21,14 @@ def safe_get(seq, index, default=None):
 
 
 def stats(nums):
+    # Compute simple stats; raise on empty input to signal caller
     if not nums:
         raise ValueError('Empty list')
     return {'min': min(nums), 'max': max(nums), 'sum': sum(nums), 'count': len(nums)}
 
 
 def main():
+    # Demo showing dedupe, safe access, and error handling for stats
     a = [3, 1, 2, 3, 4, 1]
     print('original:', a)
     print('deduped:', dedupe(a))
